@@ -1,0 +1,9 @@
+# ── B&M Intelligence — Redirects ───────────────────────────────────────
+# Dominio canónico: bm-intelligence.com
+# www -> raíz (sin www)
+https://www.bm-intelligence.com/* https://bm-intelligence.com/:splat 301!
+
+# Cuando se agregue bm-intelligence.com.mx a Cloudflare, estas reglas
+# ya quedan listas (no estorban si el dominio aún no existe en Cloudflare):
+https://bm-intelligence.com.mx/* https://bm-intelligence.com/:splat 301!
+https://www.bm-intelligence.com.mx/* https://bm-intelligence.com/:splat 301!

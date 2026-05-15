@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B&amp;M Intelligence — Inteligencia comercial accionable</title>
+  <meta name="description" content="Consultoría de inteligencia de mercado. Antes de analizar, entendemos al cliente. Reportes que terminan en decisiones, no en descripciones. Guadalajara, MX." />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="B&amp;M Intelligence — Inteligencia comercial accionable" />
+  <meta property="og:description" content="Antes de analizar, entendemos al cliente. Reportes que terminan en decisiones, no en descripciones." />
+  <meta property="og:url" content="https://bm-intelligence.com" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Geist (self-hosted) ────────────────────────────────────────────── */
+    @font-face { font-family:"Geist"; font-weight:400; font-style:normal; font-display:swap; src:url("fonts/Geist-Regular.woff2") format("woff2"); }
+    @font-face { font-family:"Geist"; font-weight:500; font-style:normal; font-display:swap; src:url("fonts/Geist-Medium.woff2") format("woff2"); }
+    @font-face { font-family:"Geist"; font-weight:600; font-style:normal; font-display:swap; src:url("fonts/Geist-SemiBold.woff2") format("woff2"); }
+    @font-face { font-family:"Geist"; font-weight:700; font-style:normal; font-display:swap; src:url("fonts/Geist-Bold.woff2") format("woff2"); }
+    @font-face { font-family:"Geist"; font-weight:800; font-style:normal; font-display:swap; src:url("fonts/Geist-Black.woff2") format("woff2"); }
+
+    :root {
+      --bg: #ffffff;
+      --bg-2: #f6f4ef;
+      --bg-3: #efece4;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4a4a;
+      --ink-mute: #767676;
+      --red: #c8102e;
+      --red-dark: #a30d24;
+      --rule: rgba(0,0,0,0.08);
+      --rule-strong: rgba(0,0,0,0.16);
+      --sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-feature-settings: "ss01"; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; }
+
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 56px; }
+
+    .lang-en { display: none; }
+    html[data-lang="en"] .lang-es { display: none; }
+    html[data-lang="en"] .lang-en { display: inline; }
+    html[data-lang="en"] .lang-en.block { display: block; }
+
+    /* ===== NAV =========================================================== */
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand .wordmark { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; line-height: 1; color: var(--ink); }
+    .brand .desc { font-weight: 600; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 4px; color: var(--ink-soft); }
+    .nav-right { display: flex; align-items: center; gap: 40px; }
+    .nav-links { display: flex; gap: 40px; font-size: 14px; font-weight: 500; }
+    .nav-links a { position: relative; padding: 4px 0; transition: color .12s ease; }
+    .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:0; height:1.5px; background:var(--red); transition:right .18s ease; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a:hover::after { right: 0; }
+    .lang-toggle { display: flex; align-items: center; font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.12em; border: 1px solid var(--rule-strong); }
+    .lang-toggle button { background: transparent; border: 0; padding: 7px 11px; cursor: pointer;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--ink-mute); transition: all .12s ease; }
+    .lang-toggle button.active { background: var(--ink); color: #fff; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff;
+      font-weight: 600; font-size: 13px; padding: 11px 18px; transition: background .12s ease; }
+    .nav-cta:hover { background: var(--red-dark); }
+    .nav-burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; transition: .2s; }
+
+    /* ===== HERO ========================================================== */
+    .hero { padding: 130px 0 0; position: relative; border-bottom: 1px solid var(--rule); }
+    .hero::before, .hero::after { content: ""; position: absolute; width: 26px; height: 26px; }
+    .hero::before { top: 44px; left: 56px; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
+    .hero::after { top: 44px; right: 56px; border-top: 2px solid var(--red); border-right: 2px solid var(--red); }
+    .hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 36px; display: inline-flex; align-items: center; gap: 14px; }
+    .hero-eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--red); border-radius: 50%; }
+    .hero h1 { font-weight: 700; letter-spacing: -0.035em; font-size: clamp(44px, 7vw, 108px);
+      line-height: 0.96; margin: 0 0 40px; max-width: 16ch; text-wrap: balance; }
+    .hero h1 .accent { color: var(--red); }
+    .hero-sub { font-size: clamp(17px, 2.2vw, 22px); line-height: 1.45; font-weight: 400;
+      color: var(--ink-soft); max-width: 56ch; margin: 0 0 48px; text-wrap: pretty; }
+    .hero-sub b { color: var(--ink); font-weight: 600; }
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding-bottom: 110px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14.5px;
+      padding: 16px 26px; cursor: pointer; transition: all .12s ease; }
+    .btn svg { width: 14px; height: 14px; }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { background: var(--red-dark); }
+    .btn-ghost { background: transparent; color: var(--ink); border-bottom: 2px solid var(--ink); padding: 16px 0; }
+    .btn-ghost:hover { color: var(--red); border-color: var(--red); }
+
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); padding: 56px 0; }
+    .stat-strip .stat { padding: 0 24px; border-right: 1px solid var(--rule); }
+    .stat-strip .stat:last-child { border-right: none; }
+    .stat-strip .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-mute); margin-bottom: 12px; }
+    .stat-strip .num { font-weight: 700; font-size: clamp(36px, 4vw, 56px); letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+    .stat-strip .num .unit { font-size: 18px; font-weight: 600; color: var(--red); margin-left: 4px; letter-spacing: 0; }
+    .stat-strip .desc { font-size: 13px; line-height: 1.5; color: var(--ink-soft); margin-top: 14px; }
+
+    /* ===== SECTIONS ====================================================== */
+    .section { padding: 120px 0; border-bottom: 1px solid var(--rule); }
+    .section.alt { background: var(--bg-2); }
+    .sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 72px; align-items: end; }
+    .sec-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+    .sec-num::before { content: ""; width: 24px; height: 2px; background: var(--red); }
+    .sec-title { font-weight: 700; font-size: clamp(30px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1.02; }
+    .sec-lede { font-size: 17px; line-height: 1.55; color: var(--ink-soft); }
+    .sec-lede b { color: var(--ink); font-weight: 600; }
+
+    .method { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .step { background: var(--bg); padding: 44px 36px; transition: background .12s ease; }
+    .section.alt .step { background: var(--bg-2); }
+    .step:hover { background: var(--bg-2); }
+    .section.alt .step:hover { background: var(--bg-3); }
+    .step .num { font-weight: 800; font-size: 52px; letter-spacing: -0.04em; color: var(--ink); opacity: .14; line-height: 1; }
+    .step .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--red); margin: 24px 0 18px; }
+    .step h3 { font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 14px; }
+    .step p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service { border: 1px solid var(--rule-strong); padding: 40px 32px; display: flex; flex-direction: column;
+      background: var(--bg); transition: border-color .12s ease; }
+    .section.alt .service { background: var(--bg); }
+    .service:hover { border-color: var(--red); }
+    .service .badge { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-mute); margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+    .service .badge .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    .service h3 { font-weight: 700; font-size: 22px; letter-spacing: -0.02em; margin: 0 0 16px; }
+    .service > p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 28px; flex: 1; }
+    .service ul { list-style: none; margin: 0; padding: 24px 0 0; border-top: 1px solid var(--rule); }
+    .service li { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-soft);
+      padding: 6px 0; display: flex; align-items: center; gap: 10px; }
+    .service li::before { content: ""; width: 4px; height: 4px; background: var(--red); flex-shrink: 0; }
+
+    .segments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .seg { background: var(--bg); padding: 44px 36px; }
+    .seg .scale { font-weight: 700; font-size: 40px; letter-spacing: -0.03em; line-height: 1; color: var(--ink); margin-bottom: 8px; }
+    .seg .scale .unit { font-size: 15px; font-weight: 600; color: var(--red); margin-left: 6px; }
+    .seg .name { font-weight: 600; font-size: 16px; margin: 18px 0 12px; }
+    .seg .desc { font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+
+    .insights { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 24px; }
+    .insight { border: 1px solid var(--rule-strong); padding: 36px 30px; display: flex; flex-direction: column;
+      background: var(--bg); transition: border-color .12s ease, transform .18s ease; }
+    .insight:hover { border-color: var(--red); }
+    .insight.feat { grid-row: span 1; background: var(--ink); color: #fff; }
+    .insight.feat h4, .insight.feat .read { color: #fff; }
+    .insight.feat p { color: rgba(255,255,255,0.7); }
+    .insight .meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-mute); margin-bottom: 24px; display: flex; gap: 18px; flex-wrap: wrap; }
+    .insight.feat .meta { color: rgba(255,255,255,0.5); }
+    .insight .meta .live { color: var(--red); }
+    .insight.feat .meta .live { color: var(--red); }
+    .insight h4 { font-weight: 700; font-size: 19px; letter-spacing: -0.02em; line-height: 1.25; margin: 0 0 14px; }
+    .insight.feat h4 { font-size: 26px; }
+    .insight p { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 28px; flex: 1; }
+    .insight .read { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red); display: inline-flex; align-items: center; gap: 8px; }
+    .insight .read::after { content: "→"; transition: transform .18s ease; }
+    .insight:hover .read::after { transform: translateX(4px); }
+
+    /* ===== CTA =========================================================== */
+    #contacto { padding: 0; }
+    .cta-band { background: var(--ink); color: #fff; padding: 96px 72px; display: grid;
+      grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; position: relative; }
+    .cta-band::before, .cta-band::after { content: ""; position: absolute; width: 26px; height: 26px; }
+    .cta-band::before { top: 32px; left: 32px; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
+    .cta-band::after { bottom: 32px; right: 32px; border-bottom: 2px solid var(--red); border-right: 2px solid var(--red); }
+    .cta-band h2 { font-weight: 700; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.03em; line-height: 1.05; margin: 0; }
+    .cta-band .r p { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.7); margin: 0 0 28px; }
+
+    /* ===== FOOTER ======================================================== */
+    footer { padding-top: 80px; }
+    .footer { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; padding-bottom: 56px; }
+    .footer .col h5 { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-mute); margin: 0 0 16px; font-weight: 500; }
+    .footer .col a, .footer .col p { display: block; font-size: 14.5px; color: var(--ink); line-height: 2; margin: 0; }
+    .footer .col a { transition: color .12s ease; }
+    .footer .col a:hover { color: var(--red); }
+    .footer-meta p { font-weight: 500; font-size: 16px; line-height: 1.45; color: var(--ink-soft); margin-top: 18px; max-width: 32ch; }
+    .legal { padding: 28px 0 56px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); gap: 24px; }
+
+    /* ===== REVEAL ANIMATION ============================================= */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    /* ===== RESPONSIVE =================================================== */
+    @media (max-width: 1024px) {
+      .wrap { padding: 0 32px; }
+      .hero::before { left: 32px; } .hero::after { right: 32px; }
+      .sec-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+      .method, .segments { grid-template-columns: 1fr; }
+      .services { grid-template-columns: 1fr; }
+      .insights { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
+      .stat-strip .stat:nth-child(2) { border-right: none; }
+      .cta-band { grid-template-columns: 1fr; padding: 64px 40px; gap: 32px; }
+      .footer { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 0 22px; }
+      .hero { padding-top: 90px; }
+      .hero::before { top: 28px; left: 22px; } .hero::after { top: 28px; right: 22px; }
+      .hero-actions { padding-bottom: 72px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: block; }
+      .nav-right { gap: 16px; }
+      .section { padding: 72px 0; }
+      .stat-strip { grid-template-columns: 1fr; gap: 28px; }
+      .stat-strip .stat { border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 28px; }
+      .stat-strip .stat:last-child { border-bottom: none; }
+      .footer { grid-template-columns: 1fr; gap: 32px; }
+      .legal { flex-direction: column; gap: 10px; }
+      .btn { padding: 14px 22px; font-size: 14px; }
+      .cta-band { padding: 48px 24px; }
+      .cta-band::before { top: 18px; left: 18px; } .cta-band::after { bottom: 18px; right: 18px; }
+      .mobile-menu.open { display: flex; }
+    }
+
+    /* ===== MOBILE MENU ================================================== */
+    .mobile-menu { display: none; position: fixed; inset: 76px 0 0; background: var(--bg); z-index: 49;
+      flex-direction: column; padding: 32px 22px; gap: 4px; }
+    .mobile-menu a { font-weight: 600; font-size: 22px; letter-spacing: -0.02em; padding: 16px 0;
+      border-bottom: 1px solid var(--rule); }
+    .mobile-menu a:last-of-type { border-bottom: 0; }
+    .mobile-menu .btn-primary { margin-top: 24px; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ====================== -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="B&amp;M Intelligence">
+        <svg viewBox="0 0 60 36" width="46" height="28" aria-hidden="true">
+          <circle cx="20" cy="18" r="13" fill="#1a1a1a"/>
+          <circle cx="40" cy="18" r="13" fill="#1a1a1a"/>
+          <circle cx="30" cy="18" r="3.5" fill="#c8102e"/>
+        </svg>
+        <div>
+          <div class="wordmark">B&amp;M</div>
+          <div class="desc">INTELLIGENCE</div>
+        </div>
+      </a>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#metodo"><span class="lang-es">Método</span><span class="lang-en">Method</span></a>
+          <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
+          <a href="#segmentos"><span class="lang-es">Para quién</span><span class="lang-en">Who we serve</span></a>
+          <a href="#insights">Insights</a>
+        </div>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <a href="#contacto" class="nav-cta">
+          <span class="lang-es">Agendar consulta</span><span class="lang-en">Book a consult</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+        </a>
+        <button class="nav-burger" aria-label="Menu" id="burger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#metodo"><span class="lang-es">Método</span><span class="lang-en">Method</span></a>
+    <a href="#servicios"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></a>
+    <a href="#segmentos"><span class="lang-es">Para quién</span><span class="lang-en">Who we serve</span></a>
+    <a href="#insights">Insights</a>
+    <a href="#contacto" class="btn btn-primary"><span class="lang-es">Agendar consulta</span><span class="lang-en">Book a consult</span></a>
+  </div>
+
+  <span id="top"></span>
+
+  <!-- ===================== HERO ====================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-eyebrow"><span class="lang-es">Inteligencia comercial</span><span class="lang-en">Commercial intelligence</span></div>
+      <h1>
+        <span class="lang-es">Antes de analizar, <span class="accent">entendemos al cliente.</span></span>
+        <span class="lang-en">Before we analyze, <span class="accent">we understand the client.</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="lang-es">La mayoría de los reportes de inteligencia fallan en el diagnóstico, no en la ejecución. Invertimos la fórmula: <b>primero auditamos al cliente</b>, luego mapeamos la competencia. Entregables que terminan en decisiones, no en descripciones.</span>
+        <span class="lang-en">Most intelligence reports fail at the diagnosis, not the execution. We invert the formula: <b>we audit the client first</b>, then map the competition. Deliverables that end in decisions, not descriptions.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">
+          <span class="lang-es">Empezar un proyecto</span><span class="lang-en">Start a project</span>
+          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+        </a>
+        <a href="#metodo" class="btn btn-ghost"><span class="lang-es">Cómo trabajamos</span><span class="lang-en">How we work</span></a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="label"><span class="lang-es">Profundidad</span><span class="lang-en">Depth</span></div>
+          <div class="num">2-8<span class="unit"><span class="lang-es">SEM</span><span class="lang-en">WK</span></span></div>
+          <div class="desc"><span class="lang-es">por engagement, según alcance del reporte y número de actores en el mapeo.</span><span class="lang-en">per engagement, depending on report scope and number of actors mapped.</span></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="lang-es">Cobertura</span><span class="lang-en">Coverage</span></div>
+          <div class="num">3<span class="unit"><span class="lang-es">PERFILES</span><span class="lang-en">PROFILES</span></span></div>
+          <div class="desc"><span class="lang-es">Corporativos, medianas establecidas, PyMEs en crecimiento.</span><span class="lang-en">Corporates, established mid-market, growing SMBs.</span></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="lang-es">Verticales</span><span class="lang-en">Lenses</span></div>
+          <div class="num">2<span class="unit"><span class="lang-es">LENTES</span><span class="lang-en">LENSES</span></span></div>
+          <div class="desc"><span class="lang-es">Negocios + Marketing. Manufactura, e-commerce, retail.</span><span class="lang-en">Business + Marketing. Manufacturing, e-commerce, retail.</span></div>
+        </div>
+        <div class="stat">
+          <div class="label"><span class="lang-es">Idiomas</span><span class="lang-en">Languages</span></div>
+          <div class="num">ES<span class="unit">/EN</span></div>
+          <div class="desc"><span class="lang-es">Reportes bilingües según audiencia de tu organización.</span><span class="lang-en">Bilingual reports tailored to your organization's audience.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== METHOD ====================== -->
+  <section class="section" id="metodo">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-num"><span class="lang-es">Método</span><span class="lang-en">Method</span></div>
+          <h2 class="sec-title"><span class="lang-es">Tres pasos. En este orden.</span><span class="lang-en">Three steps. In this order.</span></h2>
+        </div>
+        <p class="sec-lede">
+          <span class="lang-es">Trabajamos con doble lente — negocios y marketing — pero solo después de entender el negocio que nos contrata. Por eso la <b>auditoría del cliente no es un add-on:</b> es la fundación de todo el trabajo posterior.</span>
+          <span class="lang-en">We work with a dual lens — business and marketing — but only after understanding the business that hires us. That's why the <b>client audit is not an add-on:</b> it's the foundation of everything that follows.</span>
+        </p>
+      </div>
+      <div class="method reveal">
+        <div class="step">
+          <div class="num">01</div>
+          <div class="tag"><span class="lang-es">Obligatorio &middot; No opcional</span><span class="lang-en">Mandatory &middot; Not optional</span></div>
+          <h3><span class="lang-es">Auditoría del cliente</span><span class="lang-en">Client audit</span></h3>
+          <p><span class="lang-es">Sitio, catálogo, discurso, presencia. Identificamos qué dice tu marca, qué resuelve, dónde tiene autoridad y dónde la pierde — antes de mirar fuera.</span><span class="lang-en">Site, catalog, narrative, presence. We identify what your brand says, what it solves, where it has authority and where it loses it — before looking outward.</span></p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div class="tag"><span class="lang-es">Doble lente</span><span class="lang-en">Dual lens</span></div>
+          <h3><span class="lang-es">Mapeo competitivo</span><span class="lang-en">Competitive mapping</span></h3>
+          <p><span class="lang-es">Mapeamos a tu competencia con la lente que construimos en el paso 01. Posicionamiento, portafolio, geografía, mensajes — uno a uno, no genéricos.</span><span class="lang-en">We map your competition with the lens built in step 01. Positioning, portfolio, geography, messaging — one by one, not generic.</span></p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div class="tag"><span class="lang-es">Accionable</span><span class="lang-en">Actionable</span></div>
+          <h3><span class="lang-es">Recomendaciones</span><span class="lang-en">Recommendations</span></h3>
+          <p><span class="lang-es">El entregable termina en decisiones — qué hacer, qué dejar de hacer, qué probar primero. Con respaldo operativo cuando hay que ejecutar.</span><span class="lang-en">The deliverable ends in decisions — what to do, what to stop doing, what to test first. With operational support when execution is needed.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ====================== -->
+  <section class="section alt" id="servicios">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-num"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></div>
+          <h2 class="sec-title"><span class="lang-es">Proyecto puntual o relación continua.</span><span class="lang-en">One-off project or ongoing relationship.</span></h2>
+        </div>
+        <p class="sec-lede">
+          <span class="lang-es">Estructuramos cada engagement según la profundidad necesaria. Ningún cliente recibe un reporte genérico — incluso el más ágil parte de tu contexto, no de un template.</span>
+          <span class="lang-en">We structure each engagement by the depth required. No client gets a generic report — even the leanest starts from your context, not a template.</span>
+        </p>
+      </div>
+      <div class="services reveal">
+        <div class="service">
+          <div class="badge"><span class="dot"></span>01 &middot; <span class="lang-es">Diagnóstico</span><span class="lang-en">Diagnosis</span></div>
+          <h3><span class="lang-es">Auditoría de cliente</span><span class="lang-en">Client audit</span></h3>
+          <p><span class="lang-es">Punto de partida obligatorio. Una foto honesta de tu posicionamiento, mensaje y presencia digital — la base sobre la que se construye todo lo demás.</span><span class="lang-en">Mandatory starting point. An honest snapshot of your positioning, message and digital presence — the base everything else is built on.</span></p>
+          <ul>
+            <li><span class="lang-es">2–3 semanas</span><span class="lang-en">2–3 weeks</span></li>
+            <li><span class="lang-es">Reporte ejecutivo</span><span class="lang-en">Executive report</span></li>
+            <li><span class="lang-es">Sesión de devolución</span><span class="lang-en">Debrief session</span></li>
+          </ul>
+        </div>
+        <div class="service">
+          <div class="badge"><span class="dot"></span>02 &middot; <span class="lang-es">Reporte</span><span class="lang-en">Report</span></div>
+          <h3><span class="lang-es">Inteligencia competitiva</span><span class="lang-en">Competitive intelligence</span></h3>
+          <p><span class="lang-es">Análisis profundo con doble lente. Desde corporativos multi-industria hasta PyMEs en crecimiento — la metodología es la misma, la profundidad se calibra.</span><span class="lang-en">Deep analysis with a dual lens. From multi-industry corporates to growing SMBs — the methodology is the same, the depth is calibrated.</span></p>
+          <ul>
+            <li><span class="lang-es">4–8 semanas</span><span class="lang-en">4–8 weeks</span></li>
+            <li><span class="lang-es">Reporte + dashboard</span><span class="lang-en">Report + dashboard</span></li>
+            <li><span class="lang-es">Workshop estratégico</span><span class="lang-en">Strategy workshop</span></li>
+          </ul>
+        </div>
+        <div class="service">
+          <div class="badge"><span class="dot"></span>03 &middot; Retainer</div>
+          <h3><span class="lang-es">Inteligencia continua</span><span class="lang-en">Continuous intelligence</span></h3>
+          <p><span class="lang-es">Monitoreo mensual de tu mercado, competencia y categoría. Para equipos que toman decisiones constantemente y necesitan evidencia fresca, no un PDF anual.</span><span class="lang-en">Monthly monitoring of your market, competition and category. For teams that decide constantly and need fresh evidence, not an annual PDF.</span></p>
+          <ul>
+            <li><span class="lang-es">Compromiso 6 meses</span><span class="lang-en">6-month commitment</span></li>
+            <li><span class="lang-es">Informes mensuales</span><span class="lang-en">Monthly briefings</span></li>
+            <li><span class="lang-es">Acceso directo a socios</span><span class="lang-en">Direct partner access</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SEGMENTS ====================== -->
+  <section class="section" id="segmentos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-num"><span class="lang-es">Para quién</span><span class="lang-en">Who we serve</span></div>
+          <h2 class="sec-title"><span class="lang-es">Tres perfiles, una metodología.</span><span class="lang-en">Three profiles, one methodology.</span></h2>
+        </div>
+        <p class="sec-lede">
+          <span class="lang-es">Nuestro pipeline es heterogéneo en tamaño pero homogéneo en seriedad. Lo que cambia entre un corporativo y una PyME es la profundidad del reporte, <b>no el rigor</b>.</span>
+          <span class="lang-en">Our pipeline is heterogeneous in size but homogeneous in seriousness. What changes between a corporate and an SMB is the depth of the report, <b>not the rigor</b>.</span>
+        </p>
+      </div>
+      <div class="segments reveal">
+        <div class="seg">
+          <div class="scale">$1B+<span class="unit">USD</span></div>
+          <div class="name"><span class="lang-es">Corporativos multinacionales</span><span class="lang-en">Multinational corporates</span></div>
+          <div class="desc"><span class="lang-es">Portafolios multi-industria, ecosistemas de marcas adquiridas. Reportes con profundidad por línea de negocio, geografía granular y posicionamiento competitivo sectorial.</span><span class="lang-en">Multi-industry portfolios, ecosystems of acquired brands. Reports with depth by business line, granular geography and sector competitive positioning.</span></div>
+        </div>
+        <div class="seg">
+          <div class="scale">50–500<span class="unit">FTE</span></div>
+          <div class="name"><span class="lang-es">Empresas medianas establecidas</span><span class="lang-en">Established mid-market</span></div>
+          <div class="desc"><span class="lang-es">Una o dos líneas de negocio. El caso de uso típico de la metodología B&amp;M — el reporte de contexto + análisis competitivo cubre bien la decisión.</span><span class="lang-en">One or two business lines. The typical use case for the B&amp;M methodology — the context report + competitive analysis covers the decision well.</span></div>
+        </div>
+        <div class="seg">
+          <div class="scale">&lt;50<span class="unit">FTE</span></div>
+          <div class="name"><span class="lang-es">PyMEs y empresas en crecimiento</span><span class="lang-en">SMBs and growing companies</span></div>
+          <div class="desc"><span class="lang-es">Foco más simple, menos data pública. Reportes ágiles enfocados en ICP y cuentas concretas — para decidir sobre qué mercado entrar primero.</span><span class="lang-en">Simpler focus, less public data. Lean reports focused on ICP and concrete accounts — to decide which market to enter first.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INSIGHTS ====================== -->
+  <section class="section alt" id="insights">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="sec-num">Insights</div>
+          <h2 class="sec-title"><span class="lang-es">Lo último de la unidad.</span><span class="lang-en">Latest from the desk.</span></h2>
+        </div>
+        <p class="sec-lede">
+          <span class="lang-es">Notas cortas, análisis abiertos, fragmentos de reportes que podemos compartir. Si quieres ver el formato y rigor antes de contratarnos, empieza aquí.</span>
+          <span class="lang-en">Short notes, open analyses, report fragments we can share. If you want to see the format and rigor before hiring us, start here.</span>
+        </p>
+      </div>
+      <div class="insights reveal">
+        <a href="#" class="insight feat">
+          <div class="meta">
+            <span class="live"><span class="lang-es">Reporte público</span><span class="lang-en">Public report</span></span>
+            <span><span class="lang-es">Mayo 2026</span><span class="lang-en">May 2026</span></span>
+            <span>14 min</span>
+          </div>
+          <h4><span class="lang-es">Conectores industriales: cinco competidores, una sola narrativa.</span><span class="lang-en">Industrial connectors: five competitors, one single narrative.</span></h4>
+          <p><span class="lang-es">Por qué el lenguaje técnico del sector está convergiendo — y qué oportunidad de diferenciación queda para quien hable distinto.</span><span class="lang-en">Why the sector's technical language is converging — and what differentiation opportunity remains for whoever speaks differently.</span></p>
+          <span class="read"><span class="lang-es">Leer el reporte</span><span class="lang-en">Read the report</span></span>
+        </a>
+        <a href="#" class="insight">
+          <div class="meta">
+            <span><span class="lang-es">Nota</span><span class="lang-en">Note</span></span>
+            <span><span class="lang-es">Abr 2026</span><span class="lang-en">Apr 2026</span></span>
+          </div>
+          <h4><span class="lang-es">El error de empezar por la competencia.</span><span class="lang-en">The mistake of starting with the competition.</span></h4>
+          <p><span class="lang-es">Tres casos donde el diagnóstico interno cambió por completo el mapeo competitivo posterior.</span><span class="lang-en">Three cases where the internal diagnosis completely changed the subsequent competitive mapping.</span></p>
+          <span class="read"><span class="lang-es">Leer la nota</span><span class="lang-en">Read the note</span></span>
+        </a>
+        <a href="#" class="insight">
+          <div class="meta">
+            <span><span class="lang-es">Caso</span><span class="lang-en">Case</span></span>
+            <span><span class="lang-es">Mar 2026</span><span class="lang-en">Mar 2026</span></span>
+          </div>
+          <h4><span class="lang-es">Cómo mapeamos un portafolio de 40 subsidiarias.</span><span class="lang-en">How we mapped a 40-subsidiary portfolio.</span></h4>
+          <p><span class="lang-es">Anatomía de un proyecto B&amp;M para un corporativo de $2B en ingresos.</span><span class="lang-en">Anatomy of a B&amp;M project for a $2B-revenue corporate.</span></p>
+          <span class="read"><span class="lang-es">Leer el caso</span><span class="lang-en">Read the case</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ====================== -->
+  <section id="contacto">
+    <div class="wrap" style="padding-top:0; padding-bottom:0;">
+      <div class="cta-band reveal">
+        <h2><span class="lang-es">Conversemos sobre tu próxima decisión.</span><span class="lang-en">Let's talk about your next decision.</span></h2>
+        <div class="r">
+          <p><span class="lang-es">30 minutos. Sin propuesta enlatada. Te decimos si lo que necesitas es un proyecto puntual, un retainer, o si honestamente no somos para ti.</span><span class="lang-en">30 minutes. No canned pitch. We tell you whether you need a one-off project, a retainer, or if honestly we're not for you.</span></p>
+          <a href="mailto:fcarbajal@bm-intelligence.com" class="btn btn-primary">
+            <span class="lang-es">Agendar consulta</span><span class="lang-en">Book a consult</span>
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ====================== -->
+  <footer>
+    <div class="wrap footer">
+      <div class="col footer-meta">
+        <a href="#top" class="brand" aria-label="B&amp;M Intelligence">
+          <svg viewBox="0 0 60 36" width="46" height="28" aria-hidden="true">
+            <circle cx="20" cy="18" r="13" fill="#1a1a1a"/>
+            <circle cx="40" cy="18" r="13" fill="#1a1a1a"/>
+            <circle cx="30" cy="18" r="3.5" fill="#c8102e"/>
+          </svg>
+          <div>
+            <div class="wordmark" style="font-weight:800; font-size:22px; letter-spacing:-0.02em; line-height:1; color:var(--ink);">B&amp;M</div>
+            <div class="desc" style="font-weight:600; font-size:9px; letter-spacing:0.22em; text-transform:uppercase; margin-top:4px; color:var(--ink-soft);">INTELLIGENCE</div>
+          </div>
+        </a>
+        <p><span class="lang-es">Antes de analizar, entendemos al cliente.</span><span class="lang-en">Before we analyze, we understand the client.</span></p>
+      </div>
+      <div class="col">
+        <h5><span class="lang-es">Servicios</span><span class="lang-en">Services</span></h5>
+        <a href="#servicios"><span class="lang-es">Auditoría de cliente</span><span class="lang-en">Client audit</span></a>
+        <a href="#servicios"><span class="lang-es">Inteligencia competitiva</span><span class="lang-en">Competitive intelligence</span></a>
+        <a href="#servicios"><span class="lang-es">Retainer mensual</span><span class="lang-en">Monthly retainer</span></a>
+      </div>
+      <div class="col">
+        <h5><span class="lang-es">Empresa</span><span class="lang-en">Company</span></h5>
+        <a href="#metodo"><span class="lang-es">Método</span><span class="lang-en">Method</span></a>
+        <a href="#insights">Insights</a>
+        <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+      </div>
+      <div class="col">
+        <h5><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></h5>
+        <a href="mailto:fcarbajal@bm-intelligence.com">fcarbajal@bm-intelligence.com</a>
+        <a href="mailto:amorales@bm-intelligence.com">amorales@bm-intelligence.com</a>
+        <p style="font-size:14.5px; color:var(--ink); line-height:2;">Guadalajara, Jalisco · MX</p>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span>© 2026 B&amp;M Intelligence</span>
+      <span><span class="lang-es">Confidencial · Inteligencia comercial accionable</span><span class="lang-en">Confidential · Actionable commercial intelligence</span></span>
+    </div>
+  </footer>
+
+  <script>
+    // Language toggle
+    (function(){
+      var html = document.documentElement;
+      var saved = null;
+      try { saved = window.__lang; } catch(e){}
+      var buttons = document.querySelectorAll('.lang-toggle button');
+      function setLang(lang){
+        html.setAttribute('data-lang', lang);
+        html.setAttribute('lang', lang);
+        buttons.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+      }
+      buttons.forEach(function(b){
+        b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+      });
+      setLang('es');
+    })();
+
+    // Mobile menu
+    (function(){
+      var burger = document.getElementById('burger');
+      var menu = document.getElementById('mobileMenu');
+      if(!burger) return;
+      burger.addEventListener('click', function(){ menu.classList.toggle('open'); });
+      menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ menu.classList.remove('open'); });
+      });
+    })();
+
+    // Scroll reveal
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function(e){ io.observe(e); });
+    })();
+  </script>
+</body>
+</html>
